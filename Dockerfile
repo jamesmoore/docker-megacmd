@@ -12,8 +12,8 @@ RUN apt-get update \
     && apt-get install wget -y \
 
     # Download & Install MegaCMD
-    && wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megacmd-xUbuntu_22.04_amd64.deb \
-    && (dpkg -i megacmd-xUbuntu_22.04_amd64.deb || true) \
+    && wget https://mega.nz/linux/repo/xUbuntu_24.04/amd64/megacmd-xUbuntu_24.04_amd64.deb \
+    && (dpkg -i megacmd-xUbuntu_24.04_amd64.deb || true) \
     && apt-get install -f -y \
 
     # Cleanup
