@@ -12,7 +12,7 @@ RUN <<EOF
     apt-get dist-upgrade -y
 
     # Install dependencies
-    apt-get install -y --no-install-recommends wget
+    apt-get install -y --no-install-recommends ca-certificates wget
 
     # Download & Install MegaCMD
     wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.4.0-1.1_amd64.deb
