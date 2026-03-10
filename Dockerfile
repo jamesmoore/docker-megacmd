@@ -12,8 +12,8 @@ RUN apt-get update \
     && apt-get install wget -y \
 
     # Download & Install MegaCMD
-    && wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.1.1-2.1_amd64.deb \
-    && (dpkg -i megacmd_2.1.1-2.1_amd64.deb || true) \
+    && wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.4.0-1.1_amd64.deb \
+    && (dpkg -i megacmd_2.4.0-1.1_amd64.deb || true) \
     && apt-get install -f -y \
 
     # Cleanup
