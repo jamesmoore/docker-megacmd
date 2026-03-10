@@ -1,28 +1,31 @@
+# syntax=docker/dockerfile:1
 FROM ubuntu:24.04
 
-MAINTAINER Ruslan Molchanov <ruslanys@gmail.com>
+LABEL maintainer="Ruslan Molchanov <ruslanys@gmail.com>"
 
-RUN apt-get update \
+RUN <<EOF
+    set -e
 
     # Upgrade
-    && apt-get upgrade -y \
-    && apt-get dist-upgrade -y \
+    apt-get update
+    apt-get upgrade -y
+    apt-get dist-upgrade -y
 
     # Install dependencies
-    && apt-get install wget -y \
+    apt-get install -y --no-install-recommends wget
 
     # Download & Install MegaCMD
-    && wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.4.0-1.1_amd64.deb \
-    && (dpkg -i megacmd_2.4.0-1.1_amd64.deb || true) \
-    && apt-get install -f -y \
+    wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.4.0-1.1_amd64.deb
+    dpkg -i megacmd_2.4.0-1.1_amd64.deb || true
+    apt-get install -f -y
 
     # Cleanup
-    && rm *.deb \
-    && apt-get purge -y \
-    && apt-get autoremove -y \
-    && apt-get autoclean -y \
+    rm megacmd_2.4.0-1.1_amd64.deb
+    apt-get purge -y --auto-remove wget
+    apt-get autoclean -y
+    rm -rf /var/lib/apt/lists/*
 
-
-    && mkdir /root/MEGA
+    mkdir /root/MEGA
+EOF
 
 ENTRYPOINT ["mega-cmd-server"]
