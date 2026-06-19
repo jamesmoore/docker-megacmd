@@ -16,11 +16,11 @@ RUN <<EOF
 
     # Download & Install MegaCMD
     wget https://mega.nz/linux/repo/xUbuntu_25.04/amd64/megacmd_2.5.1-1.1_amd64.deb
-    dpkg -i megacmd_2.4.0-1.1_amd64.deb || true
+    dpkg -i megacmd_2.5.1-1.1_amd64.deb || true
     apt-get install -f -y
 
     # Cleanup
-    rm megacmd_2.4.0-1.1_amd64.deb
+    rm megacmd_2.5.1-1.1_amd64.deb
     apt-get purge -y --auto-remove wget
     apt-get autoclean -y
     rm -rf /var/lib/apt/lists/*
